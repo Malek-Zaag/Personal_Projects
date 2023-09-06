@@ -1,0 +1,8 @@
+@media (max-width: 455px) {
+    .nav{
+        display: flex ;
+        flex-direction: column;
+        align-items: center;
+
+    }
+}
