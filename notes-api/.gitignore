@@ -1,0 +1,8 @@
+/node_modules
+.env
+/modules/terraform.example.tfvars
+/modules/.terraform.tfstate.lock.info
+/modules/.terraform.lock.hcl
+/modules/terraform.tfstate
+/modules/terraform.tfstate.backup
+/modules/.terraform/

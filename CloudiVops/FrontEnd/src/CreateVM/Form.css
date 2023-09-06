@@ -1,0 +1,130 @@
+.main-container {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+     width: 85%;
+     margin: 0 auto;
+   }
+   
+   .main-container__header, .main-container__subheader {
+     text-align: center;
+   }
+   
+   .form {
+     width: 700px;
+     margin: 0 auto;
+     background-color: #fafafa;
+     padding: 25px 15px;
+   }
+   
+   .form-group {
+     text-align: center
+   }
+   
+   .form-group__element {
+     margin: 10px auto;
+   }
+   
+   .form-group__label {
+     display: block;
+     width: 300px;
+     margin: 0 auto;
+     text-align: left;
+   }
+   
+   .form-group__input {
+     width: 300px;
+     padding: 10px;
+     margin: 10px;
+     border-radius: 3px;
+     border: 1px solid #003487;
+   }
+   
+   .buttons {
+     display: flex;
+     justify-content: center;
+   }
+   
+   .buttons__button {
+     width: 180px;
+     padding: 10px;
+     border-radius: 3px;
+     border: 1px solid #003487;
+     margin: 5px 12px;
+   }
+   
+   .buttons__button:hover {
+     cursor: pointer;
+     box-shadow: 3px 2px 3px rgba(175, 175, 175, 0.4);
+   }
+   
+   .buttons__button--next {
+     background-color: #003487;
+     color: #fff
+   }
+   
+   .buttons__button--back {
+     background-color: #fff;
+     color: #003487
+   }
+   
+   .select {
+     text-align: center;
+   }
+   
+   .select__item {
+     width: 500px;
+     padding: 10px;
+     border-radius: 3px;
+     border: 1px solid #003487;
+   }
+   
+   .select__item:hover {
+     cursor: pointer
+   }
+   
+   .table {
+     width: 500px;
+     margin: 15px auto;
+   }
+   
+   .summary {
+     width: 80%;
+     margin: 20px auto;
+     border: 1px solid #2b7cff;
+     padding: 10px;
+     border-radius: 3px;
+   }
+   
+   .summary__heading {
+     margin-top: 5px;
+     text-align: center;
+   }
+   
+   .summary__item-title {
+     font-weight: bold;
+   }
+   
+   .stepper {
+     padding: 3vh 0 !important;
+   }
+   
+   .stepper__step {
+     border: 1px solid #2b7cff !important;
+     cursor: default !important;
+   }
+   
+   .stepper__step + div > span {
+     color: #0f6bff !important;
+   }
+   
+   .RFS-ConnectorContainer {
+     left: calc((-50% + 2em) - 8px) !important;
+     right: calc((50% + 2em) - 8px) !important;
+   }
+   
+   .error {
+     margin-top: 0;
+     color: red;
+     font-size: 90%;
+   }

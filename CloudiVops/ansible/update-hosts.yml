@@ -1,0 +1,19 @@
+---
+- name: Update hosts
+  hosts: localhost
+ # become: true
+  vars:
+    ansible_ssh_extra_args: "-o StrictHostKeyChecking=no"
+    resource_group_name: "{{ virtual_machine_name}}-resource-group"
+    vm_name: "{{ virtual_machine_name}}"
+    ansible_user: "{{ virtual_machine_admin_username }}"
+    ansible_ssh_pass: "{{virtual_machine_admin_password }}"
+  tasks: 
+  - name: trigger the API
+    shell: az vm show -d -g {{ resource_group_name }} -n {{ vm_name }} --query publicIps -o tsv
+    register: publicIP
+  - name: update the host file
+    lineinfile: 
+     dest: ./hosts
+     line: "{{ publicIP.stdout }} ansible_user={{ ansible_user }} ansible_ssh_pass={{ ansible_ssh_pass }}"
+     insertafter: EOF

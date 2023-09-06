@@ -1,0 +1,507 @@
+#signinbx{
+    position: absolute;
+width: 539px;
+height: 850px;
+left: 32%;
+top: 10%;
+background: #FFFFFF;
+box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.08);
+border-radius: 40px;
+}
+.welcome{
+    position: absolute;
+width: 280px;
+height: 32px;
+left: 5%;
+top: 5%;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 32px;
+/* identical to box height */
+
+
+color: #000000;
+}
+.Test{
+    color: #34A853;
+}
+.Sin{
+    position: absolute;
+width: 182px;
+height: 83px;
+left: 5%;
+top: 10%;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 55px;
+line-height: 82px;
+color: #000000;
+}
+.NA{
+    position: absolute;
+    width: 86px;
+    height: 20px;
+    right: 6%;
+    top: 5%;
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    /* identical to box height */
+    
+    
+    color: #8D8D8D;
+}
+.signUp{
+    position: absolute;
+width: 150px;
+height: 20px;
+right: -10%;
+top:8%;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 13px;
+line-height: 20px;
+/* identical to box height */
+
+
+color: #34A853;
+
+}
+.Sup{
+    position: absolute;
+width: 220px;
+height: 83px;
+left: 5%;
+top: 7%;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 55px;
+line-height: 82px;
+/* identical to box height */
+
+
+color: #000000;
+}
+.NA1{
+    position: absolute;
+    width: 122px;
+    height: 20px;
+    right: 6%;
+    top: 5%;
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    /* identical to box height */
+    
+    
+    color: #8D8D8D;
+}
+#staticEmail1{
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 5%;
+    
+    top: 25%;
+   width: 451px ;
+   height: 57px;
+    
+    background: #FFFFFF;
+    border: 1px solid #4285F4;
+    border-radius: 9px;
+}
+#label1v0{
+    position: absolute;
+left: 5%;
+
+top: 18%;
+width: 306px;
+height: 24px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+color: #000000;
+}
+#labelname{
+    position: absolute;
+left: 5%;
+
+top: 33%;
+
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #000000;
+}
+#name1{
+    box-sizing: border-box;
+width: 216px;
+height: 57px;
+position: absolute;
+left: 5%;
+
+top: 37%;
+
+
+background: #FFFFFF;
+border: 1px solid #ADADAD;
+border-radius: 9px;
+}
+#labellastname{
+    position: absolute;
+right: 9%;
+
+top: 33%;
+width: 216px;
+height:24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #000000;
+}
+#lastname{
+    box-sizing: border-box;
+    width: 216px;
+    height: 57px;
+position: absolute;
+right: 10%;
+
+top: 37%;
+
+
+background: #FFFFFF;
+border: 1px solid #ADADAD;
+border-radius: 9px;
+}
+#labelusername{
+    position: absolute;
+    left: 5%;
+    
+    top: 47%;
+    
+    width: 306px;
+    height: 24px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height */
+    
+    
+    color: #000000;
+}
+#label2v0{
+    position: absolute;
+left: 5%;
+
+top: 77%;
+
+width: 306px;
+height: 24px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #000000;
+
+}
+#username{
+    box-sizing: border-box;
+    width: 451px ;
+    height: 57px;
+position: absolute;
+left: 5%;
+
+top: 52%;
+
+
+background: #FFFFFF;
+border: 1px solid #ADADAD;
+border-radius: 9px;
+}
+#inputPassword2{
+    box-sizing: border-box;
+    width: 451px ;
+    height: 57px;
+position: absolute;
+left: 5%;
+
+top: 82%;
+
+
+background: #FFFFFF;
+border: 1px solid #ADADAD;
+border-radius: 9px;
+}
+#confirm{
+    position: absolute;
+left: 5%;
+top: 62%;
+
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #000000;
+
+}
+#password-confirm{
+    box-sizing: border-box;
+width: 451px;
+height: 57px;
+position: absolute;
+left: 5%;
+top: 68%;
+
+
+background: #FFFFFF;
+border: 1px solid #ADADAD;
+border-radius: 9px;
+}
+#serviceprovider{
+    box-sizing: border-box;
+width: 451px;
+height: 57px;
+position: absolute;
+left: 5%;
+
+top: 80%;
+
+background: #FFFFFF;
+border: 1px solid #ADADAD;
+border-radius: 9px;
+
+
+}
+#serviceprovider1{
+    box-sizing: border-box;
+width: 451px;
+height: 57px;
+position: absolute;
+left: 5%;
+
+top: 85%;
+
+background: #FFFFFF;
+border: 1px solid #ADADAD;
+border-radius: 9px;
+
+
+}
+
+#signupbtn{
+    position: absolute;
+    width: 451px;
+    height: 54px;
+    left: 5%;
+    top:92%;
+    
+    background: #0163E0;
+    border-radius: 10px;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #FFFFFF;
+
+}
+#intro{
+    
+    width:100%;
+    height:80vh;
+    background-size:cover;
+    position: relative;
+  
+}
+.sign{
+    position: absolute;
+width: 200px;
+height: 51px;
+left: 5%;
+top: 25%;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 34px;
+line-height: 51px;
+/* identical to box height */
+
+
+color: #000000;
+}
+.account{
+    position: absolute;
+width: 246px;
+height: 36px;
+left: 2%;
+top: 80%;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
+/* identical to box height */
+
+
+color: #000000;
+}
+.signdesc{
+    position: absolute;
+width: 311px;
+height: 115px;
+left: 5%;
+top:45%;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 13px;
+line-height: 20px;
+
+color: #000000;
+}
+.logo-img1{
+position: absolute;
+right: 1%;
+top: 15%;
+width: 250px;
+height: 250px;
+
+}
+#label1{
+    position: absolute;
+left: 5%;
+
+top: 30%;
+width: 306px;
+height: 24px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #000000;
+}
+#staticEmail{
+    box-sizing: border-box;
+    position: absolute;
+    left: 5%;
+    top: 38%;
+   width: 451px ;
+   height: 57px;
+    background: #FFFFFF;
+    border: 1px solid #4285F4;
+    border-radius: 9px;
+}
+#label2{
+    position: absolute;
+left: 5%;
+
+top: 52%;
+
+width: 306px;
+height: 24px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #000000;
+
+}
+#inputPassword{
+    box-sizing: border-box;
+    width: 451px ;
+    height: 57px;
+position: absolute;
+left: 5%;
+
+top: 58%;
+
+
+background: #FFFFFF;
+border: 1px solid #ADADAD;
+border-radius: 9px;
+}
+.remember{
+    position: absolute;
+width: 130px;
+height: 20px;
+left: 5%;
+top: 70%;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 20px;
+/* identical to box height */
+
+
+color: #000000;
+
+}
+.remlabel{
+    width: 108px;
+}
+#signbtn{
+    position: absolute;
+width: 451px;
+height: 54px;
+left: 6%;
+top: 75%;
+
+background: #0163E0;
+border-radius: 10px;
+
+}

@@ -1,0 +1,39 @@
+version: "3.9"
+name: "pfa"
+services:
+  # application:
+  #   build: .
+  #   ports:
+  #     - "4000:4000"
+  #   environment:
+  #     - DB_URI_COMPOSE=mongodb://admin:admin@mongodb
+  #     - PORT=4000
+  #     - JWT_SECRET=secretkey
+  #   depends_on:
+  #    - "mongodb"
+
+  mongodb:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - mongo-volume:/data/db:rw
+
+  mongo-express:
+    image: "mongo-express"
+    ports:
+      - "8081:8081"
+    restart: always
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin 
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=admin  
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    depends_on:
+     - "mongodb"
+
+volumes:
+  mongo-volume:
+

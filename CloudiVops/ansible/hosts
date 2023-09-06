@@ -1,0 +1,2 @@
+[vm]
+20.123.30.241 ansible_connection=ssh ansible_user=louay ansible_ssh_pass=LOUkharouf639536

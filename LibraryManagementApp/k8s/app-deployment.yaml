@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: library-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: myprivaterepo.azurecr.io/library-management-api:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 5050
+          env:
+            - name: API_KEY
+              value: "change me"
+            - name: HOST
+              value: "mysql-svc"
+            - name: DIALECT
+              value: "mysql"
+            - name: DB
+              value: "change me"
+            - name: USER
+              value: "change me"
+            - name: PASS
+              value: "change me"
+            - name: PORT
+              value: "5050"

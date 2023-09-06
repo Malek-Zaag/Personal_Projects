@@ -1,0 +1,12 @@
+---
+- name : install IIS 
+  hosts: vm 
+  #become: true
+  vars:
+     ansible_ssh_extra_args: "-o StrictHostKeyChecking=no"
+  tasks: 
+    - name : install iis using win_feature 
+      win_feature:
+         name: Web-Server
+         state: present
+         

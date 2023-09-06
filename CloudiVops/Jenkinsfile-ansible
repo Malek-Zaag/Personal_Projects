@@ -1,0 +1,59 @@
+pipeline{
+    agent any
+    parameters {
+        choice(name: 'BUTTON', choices: ['Mysql', 'Docker'], description: 'Select installation button')
+        choice(name: 'OSIMAGE', choices: ['Linux', 'Windows', 'windows_server'], description: 'Select OS image')
+    }
+    stages{
+         stage("getting code") {
+            steps {
+                git url: 'https://github.com/Louaykharouf26/PFA', branch: 'malek',
+                credentialsId: 'github-credentials' //jenkins-github-creds
+                sh "ls -ltr"
+            }
+        }
+        stage ("applying selected playbook button"){
+            steps{
+                script {
+            echo "Update hosts "
+            dir("ansible"){
+            sh "ansible-playbook update-hosts.yml --extra-vars='@/var/jenkins_home/workspace/PFAPIPELINE/terraform-template/terraform.tfvars.json'"
+            //sh "ansible-playbook -i hosts ping.yaml"}
+            if (params.OSIMAGE== 'Linux') {
+                dir ("linux") {
+                    if (params.BUTTON=='Mysql') {
+                        // playbook to install mysql
+                        sh "ansible-playbook -i ../hosts install_mysql.yaml"
+                    }
+                    else {
+                        // playbook to install docker 
+                        sh "ansible-playbook -i ../hosts install_docker.yaml"
+                    }
+                }
+            } else if (params.OSIMAGE == 'Windows'){
+                dir ("windows") {
+                    if (params.BUTTON=='Mysql') {
+                        // playbook to install mysql
+                        sh "ansible-playbook -i ../hosts install_mysql.yml"
+                    }
+                    else {
+                        // playbook to install iis 
+                        sh "ansible-playbook -i ../hosts install_iis.yml"
+                    }
+                }
+            } else {
+                dir ("win_server") {
+                    if (params.BUTTON=='Mysql') {
+                        // playbook to install mysql 
+                        sh "ansible-playbook -i ../hosts install_mysql.yml"
+                    }
+                    else {
+                        // playbook to install docker 
+                        sh "ansible-playbook -i ../hosts install_docker.yml"
+                    }
+                }                    
+            }               
+        }
+    }}}}
+
+}
