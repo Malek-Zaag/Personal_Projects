@@ -1,4 +1,6 @@
-In this lab, you will:
+# Introduction
+
+In this lab, We will:
 
 - Configure and Deploy Azure Resources such as Log Analytics Workspace, Virtual Machines, and Azure Sentinel
 - Implement Network and Virtual Machine Security Best Practices
@@ -8,3 +10,15 @@ In this lab, you will:
 - Utilize KQL to query Logs
 - Write Custom Analytic Rules to detect Microsoft Security Events
 - Utilize MITRE ATT&CK to map adversary tactics, techniques, detection and mitigation procedures
+
+# Design and Topology
+
+![Alt text](image.png)
+
+# Fulfilled Work
+
+## Resources Creation
+
+We will start by creating the resource Group to put within our resources :
+
+![Alt text](image-1.png)
