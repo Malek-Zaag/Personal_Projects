@@ -8,6 +8,9 @@ terraform {
 }
 
 provider "azurerm" {
+  features {
+
+  }
   subscription_id = var.subscription_id
 }
 
@@ -40,7 +43,7 @@ resource "azurerm_kubernetes_cluster" "example" {
   automatic_channel_upgrade        = "stable"
   http_application_routing_enabled = true
   monitor_metrics {
-    default = true
+    type = true
   }
 
 }
