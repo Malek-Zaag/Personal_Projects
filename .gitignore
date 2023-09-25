@@ -2,3 +2,5 @@
 *.lock.hcl
 *\terraform.tfvars
 AKS Monitoring/Infra/terraform.tfvars
+AKS Monitoring/Infra/terraform.state.backup
+AKS Monitoring/Infra/terraform.state
