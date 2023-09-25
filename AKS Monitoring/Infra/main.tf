@@ -19,6 +19,16 @@ resource "azurerm_resource_group" "example" {
   location = "West Europe"
 }
 
+resource "azurerm_monitor_workspace" "example" {
+  name                = "AKS-monitor-workspace"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  tags = {
+    key = "Test"
+  }
+}
+
+
 resource "azurerm_kubernetes_cluster" "example" {
   name                = "example-aks1"
   location            = azurerm_resource_group.example.location
@@ -43,7 +53,8 @@ resource "azurerm_kubernetes_cluster" "example" {
   automatic_channel_upgrade        = "stable"
   http_application_routing_enabled = true
   monitor_metrics {
-    type = true
+    enabled                      = true
+    azurerm_monitor_workspace_id = azurerm_monitor_workspace.example.id
   }
 
 }
