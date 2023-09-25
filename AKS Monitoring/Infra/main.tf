@@ -16,11 +16,32 @@ resource "azurerm_resource_group" "example" {
   location = "West Europe"
 }
 
-resource "azurerm_virtual_network" "example" {
-  name                = "AKS-vnet"
-  resource_group_name = azurerm_resource_group.example.name
+resource "azurerm_kubernetes_cluster" "example" {
+  name                = "example-aks1"
   location            = azurerm_resource_group.example.location
-  address_space       = ["10.0.0.0/16"]
-}
+  resource_group_name = azurerm_resource_group.example.name
+  dns_prefix          = "my_cluster"
+  sku_tier            = "Paid"
 
+  default_node_pool {
+    name       = "default"
+    node_count = 3
+    vm_size    = "Standard_D2_v2"
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = {
+    Environment = "Test"
+  }
+
+  automatic_channel_upgrade        = "stable"
+  http_application_routing_enabled = true
+  monitor_metrics {
+    default = true
+  }
+
+}
 
