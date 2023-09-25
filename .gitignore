@@ -1,3 +1,4 @@
 *.exe
 *.lock.hcl
 *\terraform.tfvars
+AKS Monitoring/Infra/terraform.tfvars

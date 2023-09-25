@@ -19,12 +19,32 @@ resource "azurerm_resource_group" "example" {
   location = "West Europe"
 }
 
-resource "azurerm_monitor_workspace" "example" {
-  name                = "AKS-monitor-workspace"
-  resource_group_name = azurerm_resource_group.example.name
+resource "random_id" "workspace" {
+  keepers = {
+    # Generate a new id each time we switch to a new resource group
+    group_name = azurerm_resource_group.example.name
+  }
+
+  byte_length = 8
+}
+
+resource "azurerm_log_analytics_workspace" "example" {
+  name                = "k8s-workspace-${random_id.workspace.hex}"
   location            = azurerm_resource_group.example.location
-  tags = {
-    key = "Test"
+  resource_group_name = azurerm_resource_group.example.name
+  sku                 = "PerGB2018"
+}
+
+resource "azurerm_log_analytics_solution" "example" {
+  solution_name         = "ContainerInsights"
+  location              = azurerm_resource_group.example.location
+  resource_group_name   = azurerm_resource_group.example.name
+  workspace_resource_id = azurerm_log_analytics_workspace.example.id
+  workspace_name        = azurerm_log_analytics_workspace.example.name
+
+  plan {
+    publisher = "Microsoft"
+    product   = "OMSGallery/ContainerInsights"
   }
 }
 
@@ -33,13 +53,13 @@ resource "azurerm_kubernetes_cluster" "example" {
   name                = "example-aks1"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-  dns_prefix          = "my_cluster"
-  sku_tier            = "Paid"
+  dns_prefix          = "my-cluster"
+  sku_tier            = "Standard"
 
   default_node_pool {
     name       = "default"
-    node_count = 3
-    vm_size    = "Standard_D2_v2"
+    node_count = 2
+    vm_size    = "Standard_A2_v2"
   }
 
   identity {
@@ -52,9 +72,9 @@ resource "azurerm_kubernetes_cluster" "example" {
 
   automatic_channel_upgrade        = "stable"
   http_application_routing_enabled = true
-  monitor_metrics {
-    enabled                      = true
-    azurerm_monitor_workspace_id = azurerm_monitor_workspace.example.id
+
+  oms_agent {
+    log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id
   }
 
 }
