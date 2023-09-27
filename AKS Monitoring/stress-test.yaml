@@ -14,7 +14,7 @@ spec:
       name: infinite-calls
       labels:
         app: infinite-calls
-  spec:
+    spec:
       containers:
       - name: infinite-calls
         image: busybox
