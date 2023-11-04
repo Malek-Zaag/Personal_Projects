@@ -1,8 +1,12 @@
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import os 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost/dbname'  # Replace with your PostgreSQL connection details
+username=os.environ.get("USERNAME")
+password=os.environ.get("PASSWORD")
+host=os.environ.get("DB_HOST")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:admin@localhost/admin'  # Replace with your PostgreSQL connection details
 db = SQLAlchemy(app)
 
 class Book(db.Model):
