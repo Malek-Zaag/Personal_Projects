@@ -3,10 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 import os 
 
 app = Flask(__name__)
-username=os.environ.get("USERNAME")
-password=os.environ.get("PASSWORD")
-host=os.environ.get("DB_HOST")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://{username}:{password}@{host}/admin'  # Replace with your PostgreSQL connection details
+username="admin" if not os.environ.get("DB_USER") else os.environ.get("DB_USER")
+password="admin" if not os.environ.get("DB_PASS") else os.environ.get("DB_PASS")
+host="localhost" if not os.environ.get("DB_HOST") else os.environ.get("DB_HOST") 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://{}:{}@{}/admin'.format(username,password,host)  # Replace with your PostgreSQL connection details
 db = SQLAlchemy(app)
 
 class Book(db.Model):
@@ -42,4 +42,4 @@ def delete_book(id):
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=4000)
+    app.run(host="0.0.0.0",debug=True, port=4000)
