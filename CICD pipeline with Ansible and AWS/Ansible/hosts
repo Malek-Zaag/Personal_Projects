@@ -1,0 +1,7 @@
+[ec2]
+ip-one
+ip-two
+
+[ec2:vars]
+ansbile_user=admin
+ansible_ssh_private_key=~/ec2-key-pair.pem
