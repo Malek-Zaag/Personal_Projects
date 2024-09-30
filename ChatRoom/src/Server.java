@@ -4,32 +4,45 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
-public class Server {
-    private ServerSocket serverSocket;
-    private Socket clientSocket;
-    private PrintWriter out;
-    private BufferedReader in;
-
-    public void start() {
+public class Server implements Runnable {
+    private ArrayList<ConnectionHandler> connectionHandlers;
+    @Override
+    public void run() {
         try{
-            this.serverSocket=new ServerSocket(999);
-            this.clientSocket= serverSocket.accept();
-            if (this.clientSocket.isBound()) {
-                System.out.println("hello client");
-            }
-            this.out= new PrintWriter(clientSocket.getOutputStream(),true);
-            this.in=new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            ServerSocket serverSocket=new ServerSocket(999);
+            Socket clientSocket= serverSocket.accept();
+            ConnectionHandler connectionHandler=new ConnectionHandler(clientSocket);
+            connectionHandlers.add(connectionHandler);
         }catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    class ConnectionHandler implements Runnable{
+        private Socket client;
+        private PrintWriter out;
+        private BufferedReader in;
 
-    public static void main(String[] args)  {
-        Server server = new Server();
-        Client client=new Client();
-        server.start();
-        client.startConnection();
+        public ConnectionHandler(Socket client) {
+            this.client=client;
+        }
+        @Override
+        public void run(){
+            try {
+                out = new PrintWriter(this.client.getOutputStream(), true);
+                in = new BufferedReader(new InputStreamReader(this.client.getInputStream()));
+                out.println("please enter a name");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Server server=new Server();
+        Thread t1=new Thread(server);
+        t1.start();
     }
 }
