@@ -3,18 +3,38 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.Scanner;
 
-public class Client {
-    private Socket clientSocket;
+public class Client implements Runnable {
+    private Socket client;
     private PrintWriter out;
     private BufferedReader in;
-    public void startConnection(){
+    @Override
+    public void run() {
         try {
-            clientSocket = new Socket(InetAddress.getLocalHost(), 999);
-            out = new PrintWriter(clientSocket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            client = new Socket(InetAddress.getLocalHost(), 999);
+            out = new PrintWriter(client.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            this.sendMessage();
+
+            out.println("hello server from client");
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void sendMessage(){
+        Scanner in=new Scanner(System.in);
+        while (!client.isClosed()) {
+            String msg=in.nextLine();
+            System.out.println(msg);
+            out.write(msg);
+            out.flush();
+        }
+    }
+
+    public static void main(String[] args) {
+        Client client=new Client();
+        client.run();
     }
 }
