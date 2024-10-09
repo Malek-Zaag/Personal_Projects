@@ -7,24 +7,27 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Server {
+    ServerSocket serverSocket;
 
-    private BufferedReader in;
+    public Server() throws IOException {
+        this.serverSocket = new ServerSocket(999);
+    }
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Server server = new Server();
         server.run();
     }
 
     public void run() {
-        try {
-            ServerSocket serverSocket = new ServerSocket(999);
-            Socket client = serverSocket.accept();
-            ConnectionHandler handler = new ConnectionHandler(client);
-            Thread t = new Thread(handler);
-            t.start();
-        } catch (Exception e) {
-            e.printStackTrace();
+        while (!serverSocket.isClosed()) {
+            try {
+                Socket client = serverSocket.accept();
+                ConnectionHandler handler = new ConnectionHandler(client);
+                Thread t = new Thread(handler);
+                t.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -36,10 +39,10 @@ public class Server {
 
         public ConnectionHandler(Socket client) {
             this.client = client;
-            System.out.println("A new Client is connected");
             try {
                 out = new PrintWriter(this.client.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(this.client.getInputStream()));
+                System.out.println(in.readLine() + " is connected");
                 this.connectionHandlers.add(this);
             } catch (Exception e) {
                 e.printStackTrace();
