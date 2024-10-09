@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Server {
+    private static ArrayList<ConnectionHandler> connectionHandlers = new ArrayList<>();
     ServerSocket serverSocket;
 
     public Server() throws IOException {
@@ -32,8 +33,8 @@ public class Server {
     }
 
     static class ConnectionHandler implements Runnable {
-        private ArrayList<ConnectionHandler> connectionHandlers = new ArrayList<>();
         private Socket client;
+        private String clientUsername;
         private PrintWriter out;
         private BufferedReader in;
 
@@ -42,8 +43,10 @@ public class Server {
             try {
                 out = new PrintWriter(this.client.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(this.client.getInputStream()));
-                System.out.println(in.readLine() + " is connected");
-                this.connectionHandlers.add(this);
+                String clientUsername = in.readLine();
+                this.clientUsername = clientUsername;
+                System.out.println(clientUsername + " is connected");
+                connectionHandlers.add(this);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -55,22 +58,26 @@ public class Server {
             while (this.client.isConnected()) {
                 try {
                     msg = in.readLine();
-                    System.out.println(msg);
+                    System.out.println(clientUsername + " : " + msg);
+                    broadcastMsg(clientUsername, msg);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
 
-        public void broadcastMsg(String msg) {
+        public void broadcastMsg(String clientUsername, String msg) {
             for (ConnectionHandler connectionHandler : connectionHandlers) {
-                try {
-                    connectionHandler.out.write(msg);
-                    connectionHandler.out.write("\n");
-                    connectionHandler.out.flush();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if (connectionHandler.clientUsername != clientUsername) {
+                    try {
+                        connectionHandler.out.write(clientUsername + " : " + msg);
+                        connectionHandler.out.write("\n");
+                        connectionHandler.out.flush();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
+
             }
         }
     }
