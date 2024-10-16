@@ -20,7 +20,7 @@
     "mongoose": "^8.0.0",
     "nodemon": "^3.0.0",
     "simplecrypt": "^0.1.0",
-    "stripe": "^16.0.0",
+    "stripe": "^17.0.0",
     "validator": "^13.7.0"
   }
 }
