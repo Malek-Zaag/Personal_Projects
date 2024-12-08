@@ -16,7 +16,7 @@
     "bootstrap-icons": "^1.10.5",
     "chart.js": "^4.3.0",
     "material-table": "^2.0.3",
-    "react": "^18.2.0",
+    "react": "^19.0.0",
     "react-dom": "^18.2.0",
     "react-form-stepper": "^2.0.3",
     "react-router-dom": "^7.0.0",
@@ -27,7 +27,7 @@
     "xterm-addon-web-links": "^0.9.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
+    "@types/react": "^19.0.0",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^9.0.0",
