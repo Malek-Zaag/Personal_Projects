@@ -12,7 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^6.0.0",
+    "@mui/material": "^7.0.0",
     "bootstrap-icons": "^1.10.5",
     "chart.js": "^4.3.0",
     "material-table": "^2.0.3",
